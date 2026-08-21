@@ -2,7 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 
-// Importando as imagens reais da sua pasta src/assets (adicione mais conforme necessário)
+// Importando a sua logo
+import logoImg from '../assets/Camada 2.png';
+
+// Importando as imagens reais da sua frota
 import imgBg from '../assets/a (1).jpeg';
 import frota1 from '../assets/a (2).jpeg';
 import frota2 from '../assets/a (3).jpeg';
@@ -19,7 +22,7 @@ const contatos = [
     { numero: "61981849206", display: "(61) 9 8184-9206" }
 ];
 
-// O número principal para destaque no topo (pode alterar o índice se quiser outro como principal)
+// O número principal para destaque no topo
 const mainPhone = contatos[3];
 ---
 
@@ -30,11 +33,12 @@ const mainPhone = contatos[3];
     <!-- HEADER PREMIUM -->
     <header class="fixed w-full top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b border-white/10 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <!-- Logo -->
+            <!-- Logo Atualizada -->
             <div class="flex items-center gap-3">
-                <div class="w-12 h-12 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-xl flex items-center justify-center font-black text-slate-900 text-2xl shadow-[0_0_15px_rgba(234,179,8,0.4)]">
-                    AS
-                </div>
+                <!-- Imagem da logo aplicada aqui -->
+                <Image src={logoImg} alt="Logo Auto Socorro DF" class="h-12 w-auto object-contain drop-shadow-[0_0_15px_rgba(234,179,8,0.2)]" />
+                
+                <!-- Caso sua logo já tenha o nome "Auto Socorro DF" desenhado nela, você pode apagar esta linha <span> abaixo -->
                 <span class="text-white font-black text-2xl tracking-tighter hidden sm:block">AUTO SOCORRO <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-500">DF</span></span>
             </div>
 
@@ -107,7 +111,7 @@ const mainPhone = contatos[3];
                 <div class="flex flex-col items-center justify-center">
                     <div class="flex gap-1 text-yellow-500 mb-2">
                         <!-- Estrelas -->
-                        <svg class="w/6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
@@ -241,8 +245,9 @@ const mainPhone = contatos[3];
     <footer class="bg-slate-950 text-slate-500 py-12 border-t border-white/5 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-8">
             <div class="text-center md:text-left">
-                <div class="flex items-center gap-2 justify-center md:justify-start mb-4 opacity-75 hover:opacity-100 transition-all">
-                    <div class="w-8 h-8 bg-yellow-500 rounded flex items-center justify-center font-black text-slate-900">AS</div>
+                <!-- Logo Atualizada no Rodapé -->
+                <div class="flex items-center gap-3 justify-center md:justify-start mb-4 opacity-75 hover:opacity-100 transition-all">
+                    <Image src={logoImg} alt="Logo Auto Socorro DF" class="h-10 w-auto object-contain" />
                     <span class="text-white font-bold text-xl">Auto Socorro DF</span>
                 </div>
                 <p class="text-sm max-w-xs">A excelência em reboque e salvamento veicular. Frota rastreada e profissionais capacitados.</p>
