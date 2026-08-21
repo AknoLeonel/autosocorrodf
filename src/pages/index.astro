@@ -1,11 +1,26 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
 
-const whatsappNumber = "556181849206";
+// Importando as imagens reais da sua pasta src/assets (adicione mais conforme necessário)
+import imgBg from '../assets/a (1).jpeg';
+import frota1 from '../assets/a (2).jpeg';
+import frota2 from '../assets/a (3).jpeg';
+import frota3 from '../assets/a (4).jpeg';
+import frota4 from '../assets/a (5).jpeg';
+
 const whatsappMsg = "Olá! Preciso de um socorro/guincho. Pode me ajudar?";
-const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMsg)}`;
-const phoneNumber = "6181849206"; 
-const displayPhone = "(61) 8184-9206";
+
+// Lista com todos os seus contatos
+const contatos = [
+    { numero: "61999998855", display: "(61) 9 9999-8855" },
+    { numero: "61999997853", display: "(61) 9 9999-7853" },
+    { numero: "61995541438", display: "(61) 9 9554-1438" },
+    { numero: "61981849206", display: "(61) 9 8184-9206" }
+];
+
+// O número principal para destaque no topo (pode alterar o índice se quiser outro como principal)
+const mainPhone = contatos[3];
 ---
 
 <Layout 
@@ -13,19 +28,19 @@ const displayPhone = "(61) 8184-9206";
     description="Guincho 24 horas e auto socorro no DF. Chegamos em 30 minutos. Atendimento no Plano Piloto, Taguatinga, Águas Claras e Entorno. Ligue agora!"
 >
     <!-- HEADER PREMIUM -->
-    <header class="fixed w-full top-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-white/10 transition-all duration-300">
+    <header class="fixed w-full top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b border-white/10 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <!-- Logo -->
             <div class="flex items-center gap-3">
                 <div class="w-12 h-12 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-xl flex items-center justify-center font-black text-slate-900 text-2xl shadow-[0_0_15px_rgba(234,179,8,0.4)]">
                     AS
                 </div>
-                <span class="text-white font-black text-2xl tracking-tighter">AUTO SOCORRO <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-500">DF</span></span>
+                <span class="text-white font-black text-2xl tracking-tighter hidden sm:block">AUTO SOCORRO <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-500">DF</span></span>
             </div>
 
             <!-- CTA Header -->
-            <div class="hidden md:flex items-center gap-8">
-                <div class="flex flex-col items-end">
+            <div class="flex items-center gap-4 md:gap-8">
+                <div class="hidden md:flex flex-col items-end">
                     <span class="flex items-center gap-2 text-yellow-500 text-xs font-bold uppercase tracking-widest">
                         <span class="relative flex h-2 w-2">
                             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
@@ -33,13 +48,13 @@ const displayPhone = "(61) 8184-9206";
                         </span>
                         Plantão Ativo
                     </span>
-                    <a href={`tel:${phoneNumber}`} class="text-white font-black text-xl hover:text-yellow-400 transition-colors">{displayPhone}</a>
+                    <a href={`tel:${mainPhone.numero}`} class="text-white font-black text-xl hover:text-yellow-400 transition-colors">{mainPhone.display}</a>
                 </div>
-                <a href={whatsappLink} target="_blank" class="group relative px-6 py-2.5 rounded-xl font-bold text-white overflow-hidden bg-green-500 transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(34,197,94,0.4)]">
+                <a href="#central-atendimento" class="group relative px-6 py-2.5 rounded-xl font-bold text-white overflow-hidden bg-green-500 transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(34,197,94,0.4)]">
                     <div class="absolute inset-0 w-full h-full bg-gradient-to-r from-green-400 to-green-600 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     <span class="relative flex items-center gap-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592z"/></svg>
-                        WhatsApp
+                        Falar no WhatsApp
                     </span>
                 </a>
             </div>
@@ -49,9 +64,11 @@ const displayPhone = "(61) 8184-9206";
     <main class="flex-grow pt-20 bg-slate-950">
         
         <!-- HERO SECTION IMERSIVA -->
-        <section class="relative pt-24 pb-40 px-4 sm:px-6 lg:px-8 border-b border-white/5">
-            <!-- Imagem de fundo real (Unsplash placeholder) -->
-            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center opacity-30 mix-blend-luminosity"></div>
+        <section class="relative pt-24 pb-40 px-4 sm:px-6 lg:px-8 border-b border-white/5 overflow-hidden">
+            <!-- Fundo com imagem real da frota -->
+            <div class="absolute inset-0 w-full h-full">
+                <Image src={imgBg} alt="Caminhão Guincho Auto Socorro DF" class="w-full h-full object-cover opacity-25 mix-blend-luminosity" />
+            </div>
             <!-- Gradiente para escurecer a base -->
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent"></div>
             
@@ -65,19 +82,16 @@ const displayPhone = "(61) 8184-9206";
                 </p>
                 
                 <div class="flex flex-col sm:flex-row gap-5 justify-center">
-                    <a href={whatsappLink} target="_blank" class="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white font-black text-xl py-5 px-10 rounded-2xl flex items-center justify-center gap-3 shadow-[0_0_30px_rgba(34,197,94,0.3)] transition-all hover:scale-105 border border-green-400/50">
+                    <a href="#central-atendimento" class="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white font-black text-xl py-5 px-10 rounded-2xl flex items-center justify-center gap-3 shadow-[0_0_30px_rgba(34,197,94,0.3)] transition-all hover:scale-105 border border-green-400/50">
                         Chamar Guincho Agora
-                    </a>
-                    <a href={`tel:${phoneNumber}`} class="bg-slate-800/50 backdrop-blur-md hover:bg-slate-700/50 border border-white/10 text-white font-bold text-xl py-5 px-10 rounded-2xl flex items-center justify-center gap-3 transition-all hover:scale-105">
-                        Ligar: {displayPhone}
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- FLOATING TRUST BADGES (Glassmorphism) -->
+        <!-- FLOATING TRUST BADGES -->
         <section class="relative z-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -mt-24 mb-20">
-            <div class="bg-slate-900/80 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-2xl grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-white/10">
+            <div class="bg-slate-900/90 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-2xl grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-white/10">
                 <div>
                     <p class="text-4xl font-black text-white mb-1"><span class="text-yellow-500">30</span>m</p>
                     <p class="text-sm font-semibold text-slate-400 uppercase tracking-wide">Chegada Média</p>
@@ -92,22 +106,23 @@ const displayPhone = "(61) 8184-9206";
                 </div>
                 <div class="flex flex-col items-center justify-center">
                     <div class="flex gap-1 text-yellow-500 mb-2">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <!-- Estrelas -->
+                        <svg class="w/6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                     </div>
-                    <p class="text-xs font-semibold text-white">Google Reviews</p>
+                    <p class="text-xs font-semibold text-white">Excelente no Google</p>
                 </div>
             </div>
         </section>
 
-        <!-- SEÇÃO DE SERVIÇOS (Bento Grid Style) -->
-        <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-            <div class="text-center mb-20">
+        <!-- SEÇÃO DE SERVIÇOS -->
+        <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-black text-white mb-6">Equipados para <span class="text-yellow-500">Qualquer Missão</span></h2>
-                <p class="text-xl text-slate-400 max-w-2xl mx-auto">Nossa frota é composta por plataformas hidráulicas modernas, prontas para atender desde veículos leves até caminhonetes blindadas.</p>
+                <p class="text-xl text-slate-400 max-w-2xl mx-auto">Nossa frota é composta por plataformas hidráulicas modernas, prontas para atender desde veículos leves até caminhonetes blindadas com total segurança.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -135,47 +150,86 @@ const displayPhone = "(61) 8184-9206";
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                     </div>
                     <h3 class="text-2xl font-bold text-white mb-4">Troca de Pneus</h3>
-                    <p class="text-slate-400 leading-relaxed text-lg">Sinalizamos a via com cones luminosos e trocamos seu pneu com chaves pneumáticas rapidamente.</p>
+                    <p class="text-slate-400 leading-relaxed text-lg">Sinalizamos a via com cones luminosos e trocamos seu pneu com agilidade e ferramentas profissionais.</p>
                 </div>
             </div>
         </section>
 
-        <!-- BANNER DE PAGAMENTO E ABRANGÊNCIA -->
-        <section class="py-24 bg-gradient-to-b from-slate-950 to-slate-900 px-4">
-            <div class="max-w-7xl mx-auto bg-slate-900 border border-slate-800 rounded-[2.5rem] p-8 md:p-16 flex flex-col lg:flex-row items-center gap-12 shadow-2xl relative overflow-hidden">
+        <!-- SEÇÃO NOSSA FROTA (Imagens Reais) -->
+        <section class="py-16 bg-slate-900/50 border-y border-white/5">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-black text-white mb-4">Nossa <span class="text-yellow-500">Frota em Ação</span></h2>
+                    <p class="text-slate-400">Estrutura própria, moderna e revisada para garantir a segurança do seu patrimônio.</p>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="rounded-2xl overflow-hidden border border-slate-800 hover:border-yellow-500/50 transition-colors">
+                        <Image src={frota1} alt="Guincho Plataforma 1" class="w-full h-48 object-cover hover:scale-110 transition-transform duration-500" />
+                    </div>
+                    <div class="rounded-2xl overflow-hidden border border-slate-800 hover:border-yellow-500/50 transition-colors">
+                        <Image src={frota2} alt="Guincho Plataforma 2" class="w-full h-48 object-cover hover:scale-110 transition-transform duration-500" />
+                    </div>
+                    <div class="rounded-2xl overflow-hidden border border-slate-800 hover:border-yellow-500/50 transition-colors">
+                        <Image src={frota3} alt="Guincho Plataforma 3" class="w-full h-48 object-cover hover:scale-110 transition-transform duration-500" />
+                    </div>
+                    <div class="rounded-2xl overflow-hidden border border-slate-800 hover:border-yellow-500/50 transition-colors">
+                        <Image src={frota4} alt="Guincho Plataforma 4" class="w-full h-48 object-cover hover:scale-110 transition-transform duration-500" />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BANNER DE PAGAMENTO E ABRANGÊNCIA (Com Central de Contatos) -->
+        <section id="central-atendimento" class="py-24 bg-gradient-to-b from-slate-950 to-slate-900 px-4 scroll-mt-20">
+            <div class="max-w-7xl mx-auto bg-slate-900 border border-slate-800 rounded-[2.5rem] p-8 md:p-12 flex flex-col lg:flex-row items-center gap-12 shadow-2xl relative overflow-hidden">
                 <!-- Detalhe luminoso de fundo -->
                 <div class="absolute top-0 right-0 w-96 h-96 bg-yellow-500/10 blur-[100px] rounded-full pointer-events-none"></div>
 
                 <div class="lg:w-1/2 z-10">
                     <div class="inline-flex items-center gap-2 bg-slate-950 text-yellow-500 font-bold px-4 py-2 rounded-lg mb-6 border border-slate-800">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                        Distrito Federal
+                        Distrito Federal e Entorno
                     </div>
                     <h2 class="text-4xl font-black text-white mb-6">Chegamos onde <br />você estiver.</h2>
-                    <p class="text-lg text-slate-400 mb-8 leading-relaxed">Bases operacionais no <strong>Plano Piloto, Águas Claras, Taguatinga e Guará</strong>. Atendemos todas as RAs e rodovias do entorno.</p>
+                    <p class="text-lg text-slate-400 mb-8 leading-relaxed">Bases operacionais espalhadas de forma estratégica para cobertura ágil no <strong>Plano Piloto, Águas Claras, Taguatinga e Guará</strong>.</p>
                     
                     <div class="pt-8 border-t border-slate-800">
                         <p class="text-white font-bold mb-4 flex items-center gap-2">
                             <svg class="w-6 h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            Aceitamos na hora:
+                            Facilidade no Pagamento:
                         </p>
                         <div class="flex flex-wrap gap-3">
-                            <span class="bg-slate-950 border border-slate-800 text-white px-5 py-2 rounded-xl font-medium">💳 Cartões (Até 3x)</span>
-                            <span class="bg-green-500/20 border border-green-500/30 text-green-400 px-5 py-2 rounded-xl font-bold">Pix</span>
+                            <span class="bg-slate-950 border border-slate-800 text-white px-5 py-2 rounded-xl font-medium">💳 Cartões (Débito e Crédito)</span>
+                            <span class="bg-green-500/20 border border-green-500/30 text-green-400 px-5 py-2 rounded-xl font-bold">Pix na hora</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="lg:w-1/2 w-full z-10 flex justify-center lg:justify-end">
-                    <div class="bg-slate-950 border border-slate-800 p-8 rounded-3xl w-full max-w-md shadow-2xl">
-                        <h3 class="text-2xl font-bold text-white mb-6 text-center">Precisa de orçamento?</h3>
-                        <a href={whatsappLink} class="w-full bg-green-500 hover:bg-green-600 text-white text-lg font-black py-4 rounded-xl flex items-center justify-center gap-3 transition-all mb-4">
-                            Cotar pelo WhatsApp
-                        </a>
-                        <a href={`tel:${phoneNumber}`} class="w-full bg-slate-900 hover:bg-slate-800 border border-slate-800 text-white text-lg font-bold py-4 rounded-xl flex items-center justify-center gap-3 transition-all">
-                            Ligar para Central
-                        </a>
-                        <p class="text-slate-500 text-sm text-center mt-6">Atendimento humano, sem robôs.</p>
+                    <div class="bg-slate-950 border border-slate-800 p-8 rounded-3xl w-full max-w-lg shadow-2xl">
+                        <h3 class="text-2xl font-bold text-white mb-2 text-center">Central de Atendimento</h3>
+                        <p class="text-slate-400 text-center mb-6 text-sm">Escolha uma linha abaixo. Atendimento 100% humano.</p>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+                            {contatos.map((contato) => (
+                                <a 
+                                    href={`https://wa.me/55${contato.numero}?text=${encodeURIComponent(whatsappMsg)}`} 
+                                    target="_blank"
+                                    class="bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-green-500/50 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-all group"
+                                >
+                                    <svg class="w-5 h-5 text-green-500 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592z"/></svg>
+                                    {contato.display}
+                                </a>
+                            ))}
+                        </div>
+                        
+                        <div class="mt-6 pt-6 border-t border-slate-800">
+                            <a href={`tel:${mainPhone.numero}`} class="w-full bg-yellow-500 hover:bg-yellow-400 text-slate-900 text-lg font-black py-4 rounded-xl flex items-center justify-center gap-3 transition-all">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                                Ligar Agora
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -183,22 +237,23 @@ const displayPhone = "(61) 8184-9206";
 
     </main>
 
-    <!-- FOOTER MINIMALISTA E SÉRIO -->
-    <footer class="bg-slate-950 text-slate-500 py-16 border-t border-white/5 relative overflow-hidden">
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 text-slate-500 py-12 border-t border-white/5 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-8">
             <div class="text-center md:text-left">
-                <div class="flex items-center gap-2 justify-center md:justify-start mb-4 opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
+                <div class="flex items-center gap-2 justify-center md:justify-start mb-4 opacity-75 hover:opacity-100 transition-all">
                     <div class="w-8 h-8 bg-yellow-500 rounded flex items-center justify-center font-black text-slate-900">AS</div>
                     <span class="text-white font-bold text-xl">Auto Socorro DF</span>
                 </div>
-                <p class="text-sm max-w-xs">A excelência em reboque e salvamento veicular. Frota rastreada e profissionais certificados.</p>
+                <p class="text-sm max-w-xs">A excelência em reboque e salvamento veicular. Frota rastreada e profissionais capacitados.</p>
             </div>
             
             <div class="text-center md:text-right text-sm space-y-2">
-                <p class="text-white font-semibold">Contato Direto</p>
-                <p>{displayPhone}</p>
-                <p>contato@autosocorrodf.com.br</p>
-                <p class="mt-4 text-xs font-mono opacity-50">CNPJ: 00.000.000/0001-00</p>
+                <p class="text-white font-semibold">Central 24 Horas</p>
+                {contatos.map((contato) => (
+                    <p>{contato.display}</p>
+                ))}
+                <p class="mt-4 text-xs font-mono opacity-50">Brasília - DF</p>
             </div>
         </div>
     </footer>
