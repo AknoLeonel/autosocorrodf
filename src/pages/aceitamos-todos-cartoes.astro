@@ -1,0 +1,204 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+
+// Importando a sua logo
+import logoImg from '../assets/Camada 2.png';
+
+// Importando as imagens reais da sua frota
+import imgBg from '../assets/a (1).jpeg';
+
+// ==========================================
+// 📍 VARIÁVEIS DA PÁGINA
+// ==========================================
+const titleSEO = "Guincho Aceita Cartão de Crédito e Débito no DF - Auto Socorro DF";
+const descriptionSEO = "Guincho no DF que aceita todos os cartões de crédito e débito, além de Pix. Pague com facilidade no local. Chame o Auto Socorro DF!";
+// ==========================================
+
+const whatsappMsg = "Olá! Preciso de um socorro/guincho. Pode me ajudar?";
+
+// Lista com todos os seus contatos
+const contatos = [
+    { numero: "61999998855", display: "(61) 9 9999-8855" },
+    { numero: "61999997853", display: "(61) 9 9999-7853" },
+    { numero: "61995541438", display: "(61) 9 9554-1438" },
+    { numero: "61981849206", display: "(61) 9 8184-9206" }
+];
+
+// O número principal para destaque no topo
+const mainPhone = contatos[3];
+
+// Link do WhatsApp principal pré-gerado
+const whatsappLinkPrincipal = `https://wa.me/55${mainPhone.numero}?text=${encodeURIComponent(whatsappMsg)}`;
+
+// Ícone do WhatsApp
+const wppIcon = "M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z";
+
+const cards = [
+    { t: "Cartão de Crédito", d: "Aceitamos as principais bandeiras, direto na máquina, no local do atendimento." },
+    { t: "Cartão de Débito", d: "Pague na hora com débito, com total segurança e comprovante." },
+    { t: "Pix na Hora", d: "Pagamento instantâneo, sem complicação e com confirmação imediata." },
+];
+
+// Menu regional e institucional (mesmos links das outras páginas)
+const regioes = [
+    ["Guincho Guará", "guincho-guara"],
+    ["Guincho Águas Claras", "guincho-aguas-claras"],
+    ["Guincho Asa Sul", "guincho-asa-sul"],
+    ["Guincho Asa Norte", "guincho-asa-norte"],
+    ["Guincho Sudoeste", "guincho-sudoeste"],
+    ["Guincho Lago Sul", "guincho-lago-sul"],
+    ["Guincho Cruzeiro", "guincho-cruzeiro"],
+    ["Guincho Bandeirante", "guincho-bandeirante"],
+    ["Guincho Vicente Pires", "guincho-vicente-pires"],
+    ["Guincho Candangolândia", "guincho-candangolandia"],
+];
+const institucionais = [
+    ["Guincho 24 Horas", "guincho-24horas"],
+    ["Atendimento Imediato", "atendimento-imediato"],
+    ["Aceitamos Cartões", "aceitamos-todos-cartoes"],
+    ["Contato", "contato"],
+    ["Página Inicial", ""],
+];
+---
+
+<Layout 
+    title={titleSEO} 
+    description={descriptionSEO}
+>
+    <!-- HEADER PREMIUM -->
+    <header class="fixed w-full top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b border-white/10 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="/" class="flex items-center gap-3">
+                <Image src={logoImg} alt="Logo Auto Socorro DF" class="h-12 w-auto object-contain drop-shadow-[0_0_15px_rgba(234,179,8,0.2)]" />
+            </a>
+
+            <div class="flex items-center gap-3 md:gap-8 flex-shrink-0">
+                <div class="hidden md:flex flex-col items-end flex-shrink-0">
+                    <span class="flex items-center gap-2 text-yellow-500 text-xs font-bold uppercase tracking-widest">
+                        <span class="relative flex h-2 w-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-yellow-500"></span>
+                        </span>
+                        Plantão Ativo
+                    </span>
+                    <a href={`tel:${mainPhone.numero}`} class="text-white font-black text-xl hover:text-yellow-400 transition-colors whitespace-nowrap" aria-label="Ligar para plantão">{mainPhone.display}</a>
+                </div>
+
+                <a href={whatsappLinkPrincipal} target="_blank" rel="noopener noreferrer" class="group relative px-4 py-2 md:px-6 md:py-2.5 rounded-xl text-sm md:text-base font-bold text-white overflow-hidden bg-green-500 transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(34,197,94,0.4)] flex-shrink-0 whitespace-nowrap" aria-label="Falar no WhatsApp">
+                    <div class="absolute inset-0 w-full h-full bg-gradient-to-r from-green-400 to-green-600 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <span class="relative flex items-center gap-1.5 md:gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 md:w-[18px] md:h-[18px]" fill="currentColor" viewBox="0 0 16 16"><path d={wppIcon}/></svg>
+                        <span class="hidden sm:block">Falar no WhatsApp</span>
+                        <span class="sm:hidden">WhatsApp</span>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow pt-20 bg-slate-950">
+
+        <!-- HERO -->
+        <section class="relative pt-24 pb-28 px-4 sm:px-6 lg:px-8 border-b border-white/5 overflow-hidden">
+            <div class="absolute inset-0 w-full h-full">
+                <Image src={imgBg} alt="Caminhão Guincho Auto Socorro DF" class="w-full h-full object-cover opacity-25 mix-blend-luminosity" />
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent"></div>
+
+            <div class="relative z-10 max-w-5xl mx-auto text-center mt-10">
+                <h1 class="text-5xl sm:text-6xl md:text-7xl font-black mb-6 tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white via-slate-200 to-slate-400">
+                    Aceitamos Todos os Cartões <br />
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-500 to-yellow-600">Crédito, Débito e Pix</span>
+                </h1>
+                <p class="text-xl sm:text-2xl text-slate-300 mb-10 max-w-3xl mx-auto font-medium leading-relaxed">
+                    Sem dinheiro na carteira? Sem problema. Pague seu guincho com cartão ou Pix, direto no local do atendimento.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-5 justify-center">
+                    <a href={whatsappLinkPrincipal} target="_blank" rel="noopener noreferrer" class="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white font-black text-xl py-5 px-10 rounded-2xl flex items-center justify-center gap-3 shadow-[0_0_30px_rgba(34,197,94,0.3)] transition-all hover:scale-105 border border-green-400/50" aria-label="Chamar Guincho via WhatsApp">
+                        Chamar Guincho Agora
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTEÚDO DA PÁGINA -->
+        <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-black text-white mb-4">Facilidade no <span class="text-yellow-500">Pagamento</span></h2>
+                <p class="text-slate-400 max-w-2xl mx-auto text-lg">Levamos a maquininha até você. Confira as formas de pagamento disponíveis.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {cards.map((c) => (
+                    <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 hover:border-yellow-500/50 hover:bg-slate-800 transition-all duration-300">
+                        <h3 class="text-2xl font-bold text-white mb-4">{c.t}</h3>
+                        <p class="text-slate-400 leading-relaxed text-lg">{c.d}</p>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <!-- CENTRAL DE ATENDIMENTO -->
+        <section id="central-atendimento" class="py-20 bg-gradient-to-b from-slate-950 to-slate-900 px-4 scroll-mt-20 border-y border-white/5">
+            <div class="max-w-3xl mx-auto bg-slate-900 border border-slate-800 rounded-[2.5rem] p-8 md:p-12 shadow-2xl">
+                <h2 class="text-3xl font-black text-white mb-2 text-center">Central de Atendimento</h2>
+                <p class="text-slate-400 text-center mb-8 text-sm">Escolha uma linha abaixo. Atendimento 100% humano.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+                    {contatos.map((contato) => (
+                        <a href={`https://wa.me/55${contato.numero}?text=${encodeURIComponent(whatsappMsg)}`} target="_blank" rel="noopener noreferrer"
+                           class="bg-slate-950 hover:bg-slate-800 border border-slate-800 hover:border-green-500/50 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-all group">
+                            <svg class="w-5 h-5 text-green-500 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 16 16"><path d={wppIcon}/></svg>
+                            {contato.display}
+                        </a>
+                    ))}
+                </div>
+                <div class="mt-6 pt-6 border-t border-slate-800">
+                    <a href={`tel:${mainPhone.numero}`} class="w-full bg-yellow-500 hover:bg-yellow-400 text-slate-900 text-lg font-black py-4 rounded-xl flex items-center justify-center gap-3 transition-all" aria-label="Ligar Agora">Ligar Agora</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SITEMAP / NAVEGAÇÃO REGIONAL -->
+        <section class="py-16 bg-slate-950 border-t border-white/5">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl font-black text-white mb-3">Atendimento em <span class="text-yellow-500">Todo o DF</span></h2>
+                    <p class="text-slate-400">Encontre a base do Auto Socorro DF mais próxima de você:</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-sm font-bold">
+                    {regioes.map(([nome, slug]) => (
+                        <a href={`https://www.autosocorrodf.com.br/${slug}`} class="block w-full bg-slate-900 hover:bg-yellow-500 hover:text-slate-900 text-white text-center py-4 px-4 rounded-xl border border-slate-800 transition-colors duration-300">{nome}</a>
+                    ))}
+                    {institucionais.map(([nome, slug]) => (
+                        <a href={`https://www.autosocorrodf.com.br/${slug}`} class="block w-full bg-slate-900 hover:bg-yellow-500 hover:text-slate-900 text-yellow-500 text-center py-4 px-4 rounded-xl border border-slate-700 transition-colors duration-300">{nome}</a>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 text-slate-500 py-12 border-t border-white/5 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-center md:text-left">
+                <div class="flex items-center gap-3 justify-center md:justify-start mb-4 opacity-75 hover:opacity-100 transition-all">
+                    <Image src={logoImg} alt="Logo Auto Socorro DF" class="h-10 w-auto object-contain" />
+                </div>
+                <p class="text-sm max-w-xs mx-auto md:mx-0">A excelência em reboque e salvamento veicular. Frota rastreada e profissionais capacitados.</p>
+            </div>
+
+            <div class="text-center md:text-right text-sm space-y-2">
+                <p class="text-white font-semibold mb-3">Central 24 Horas</p>
+                {contatos.map((contato) => (
+                    <p>{contato.display}</p>
+                ))}
+                <div class="mt-6 pt-4 border-t border-slate-800/50">
+                    <p class="text-xs">Brasília - DF</p>
+                    <p class="text-xs mt-1">&copy; {new Date().getFullYear()} Auto Socorro DF. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</Layout>
