@@ -1,46 +1,33 @@
-# Astro Starter Kit: Basics
+# Auto Socorro DF
 
-```sh
-npm create astro@latest -- --template basics
+Site do serviço de guincho 24h em Brasília, feito para converter quem está parado na estrada em uma ligação.
+
+[![Ver site no ar](https://img.shields.io/badge/Ver%20site%20no%20ar-00F5FF?style=for-the-badge&labelColor=0D1117)](https://autosocorrodf.vercel.app) [![Portfólio](https://img.shields.io/badge/Portfólio-FF00E4?style=for-the-badge&labelColor=0D1117)](https://aknoleonel.github.io)
+
+## Sobre o projeto
+
+Landing page de uma empresa de auto socorro do DF. O visitante normalmente chega pelo celular, com pressa e com o carro parado, então o site leva direto ao botão de chamar o guincho e mostra os números que passam confiança: tempo médio de chegada, atendimento 24/7 e anos de mercado.
+
+## Destaques
+
+- Chamada para WhatsApp em destaque logo na primeira tela
+- Apresentação da frota e dos serviços: plataforma hidráulica, auxílio de bateria e troca de pneus
+- Indicadores de confiança: chegada média, horário 24/7 e avaliação no Google
+- Página leve e rápida, gerada estaticamente com Astro
+
+## Tecnologias
+
+Astro · React · Tailwind CSS · Partytown
+
+## Rodando localmente
+
+```bash
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Para gerar a versão de produção: `npm run build`.
 
-## 🚀 Project Structure
+---
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
-
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Desenvolvido por [Leonel Paiva](https://github.com/AknoLeonel) · [Instagram](https://www.instagram.com/muvageof) · [Mais projetos](https://aknoleonel.github.io)
